@@ -172,7 +172,7 @@ connector "rest" "oauth2" {
 | `include_in` | Where to include in the HTTP message. If `header` is used this will override a similar name header in `headers` | `String`     | `header` or `query_param` or `body` | Yes      |
 
 #### oauth2
-| Element | Description | Type | Default Value | Required |
-|---------|-------------|------|---------------|----------|
-|         |             |      |               |          |
-|         |             |      |               |          |
+| Element     | Description                                                                                                                                                                                                    | Type         | Default Value | Required |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|---------------|----------|
+| `auth_type` | Client authentication during OAuth2. Should be one of: `basic_auth`, `post_body`, `jwt`, `mtls`, `asymetric_key`, `symetric_key`. For `asymetric_key` and `symetric_key` cert should be provided using `cert`. | `Expression` |        | No       |
+| `cert`      | Public certificate when using `asymetric_key`, `symetric_key` auth types. Can be PKS                                                                                                                           |              |               |          |
