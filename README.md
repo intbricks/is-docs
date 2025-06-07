@@ -1,2 +1,1 @@
-# is-docs
-Documentation for IntBricks Integration Service.
+Documentation and samples for IntBricks Integration Service.
