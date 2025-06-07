@@ -1,15 +1,11 @@
 ## Configuration Language
 
-Integration Service (IS) configuration language is based on [HCL](https://github.com/hashicorp/hcl). HCL is used as the
-basis
-because:
-
-- HCL is less verbose compared to JSON, XML as a domain-specific language.
-- Requires minimum on-boarding time for users (system admins, developers,
-  data-warehouse developers, ETL developers, integration developers...).
+Integration Service (IS) configuration language is based on [HCL](https://github.com/hashicorp/hcl). Key values include:
+- Less verbose compared to JSON, XML as a domain-specific language.
+- Requires minimum on-boarding time for users (system admins, developers, data-warehouse developers, 
+ ETL developers, integration developers...).
 - Users will be able to maintain IS configuration files along with other infrastructure and application source code in
-  the
-  same version control repository.
+  the same version control repository.
 
 ### Concepts
 
