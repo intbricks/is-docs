@@ -5,6 +5,7 @@
 #### Basic Examples
 
 Authentication using basic auth:
+
 ```
 connector "rest" "logout" {
   connection = http.http_conn
@@ -12,7 +13,7 @@ connector "rest" "logout" {
     username = env("PHOTO_USERNAME")
     password = env("PHOTO_PASSWORD")
   }
-  mode       = "Stream"
+  mode       = "stream"
   resource   = "/me/logout"
   method     = "POST"
   headers = {
@@ -45,6 +46,7 @@ connector "rest" "logout" {
 ```
 
 Authentication using api key (custom HTTP header):
+
 ```
 connector "rest" "api-key" {
   resource   = "/students"  // a resource guarded with API key
@@ -54,7 +56,7 @@ connector "rest" "api-key" {
   api_key {
     name = "X-API-Key"
     value = awsssm("default", "/api/key", true, true)
-    include_as = "header" // or request parameter
+    include_as = "header" // or request parameter  or in the body 
   }
   method     = "POST"
   headers = {
@@ -89,8 +91,9 @@ connector "rest" "api-key" {
 ```
 
 #### Advance Example
- 
+
 OAuth2 authentication using `client`
+
 ```
 connector "rest" "oauth2" {
   resource   = "/classes"  // a resource guarded with OAuth2
@@ -143,9 +146,32 @@ connector "rest" "oauth2" {
 } 
 ```
 
-
 ### Reference
 
+| Element    | Description                     | Type       | Default Value | Required |
+|------------|---------------------------------|------------|---------------|---------|
+|            |                                 |            |               |         |
+| `basic_auth` | Basic auth based authentication | `basic_auth` |               | No      |
+| `api_key`    | API key based authentication    | `api_key`    |               | No      |
+| `oauth2`     | OAuth2 based authentication     | `basic_auth` |               | No      |
+|            |                                 |            |               |         |
+
+#### basic_auth
+
+| Element  | Description             | Type       | Default Value | Required |
+|----------|-------------------------|------------|---------------|----------|
+| `username` | Username for basic auth | `Expression` |               | Yes      |
+| `password` | Password for basic auth | `Expression` |               | Yes      |
+
+#### api_key
+
+| Element    | Description                                                                                                     | Type       | Default Value                       | Required |
+|------------|-----------------------------------------------------------------------------------------------------------------|------------|-------------------------------------|----------|
+| `name`       |                                                                                                                 | `Expression` |                                     | Yes      |
+| `value`      |                                                                                                                 | `Expression` |                                     | Yes      |
+| `include_in` | Where to include in the HTTP message. If `header` is used this will override a similar name header in `headers` | `String`     | `header` or `query_param` or `body` | Yes      |
+
+#### oauth2
 | Element | Description | Type | Default Value | Required |
 |---------|-------------|------|---------------|----------|
 |         |             |      |               |          |
